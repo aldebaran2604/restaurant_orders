@@ -12,14 +12,14 @@ internal static class DataHelpers
 
     private static readonly Lazy<List<Product>> _products = new Lazy<List<Product>>(CreateListProducts);
 
-    internal static List<Product> Products { get => _products.Value; }
+    internal static List<Product> ListProducts { get => _products.Value; }
 
     private static readonly Lazy<List<Stock>> _stock = new Lazy<List<Stock>>(CreateListStock);
 
     /// <summary>
     /// List of products in stock
     /// </summary>
-    internal static List<Stock> Stock { get => _stock.Value; }
+    internal static List<Stock> ListStock { get => _stock.Value; }
 
     private static readonly Lazy<List<Order>> _orders = new Lazy<List<Order>>(CreateListOrders);
 
@@ -72,11 +72,11 @@ internal static class DataHelpers
     private static List<Stock> CreateListStock()
     {
         List<Stock> stock = new List<Stock>();
-        Product productTake1Last = Products.Take(1).Last();
+        Product productTake1Last = ListProducts.Take(1).Last();
         stock.Add(new Stock(productTake1Last.SKU) { Id = ConsecutiveStockId, UnitPrice = 5, Quantity = 100 });
-        Product productTake2Last = Products.Take(2).Last();
+        Product productTake2Last = ListProducts.Take(2).Last();
         stock.Add(new Stock(productTake2Last.SKU) { Id = ConsecutiveStockId, UnitPrice = 8, Quantity = 56 });
-        Product productLast = Products.Last();
+        Product productLast = ListProducts.Last();
         stock.Add(new Stock(productLast.SKU) { Id = ConsecutiveStockId, UnitPrice = 1, Quantity = 300 });
         return stock;
     }
@@ -84,6 +84,23 @@ internal static class DataHelpers
     private static List<Order> CreateListOrders()
     {
         List<Order> orders = new List<Order>();
+        Product productFirst = ListProducts.First();
+        Stock stockFist = ListStock.First(s => s.ProductSKU == productFirst.SKU);
+        stockFist.Quantity--;
+
+        Product productLast = ListProducts.Last();
+        Stock stockLast = ListStock.Last(s => s.ProductSKU == productLast.SKU);
+        stockLast.Quantity--;
+
+        decimal totalToPay = stockFist.UnitPrice + stockLast.UnitPrice;
+
+        Order order = new Order() { Id = ConsecutiveOrderId, OrderStatus = OrderStatus.Pending, TotalPay = totalToPay };
+        List<OrderDetails> orderDetails = new List<OrderDetails>();
+
+        orderDetails.Add(new OrderDetails(productFirst.SKU) { Id = ConsecutiveOrderDetailsId,OrderId = order.Id, Quantity = 1 });
+        orderDetails.Add(new OrderDetails(productLast.SKU) { Id = ConsecutiveOrderDetailsId,OrderId = order.Id, Quantity = 1 });
+        order.OrderDetails = orderDetails;
+        orders.Add(order);
         return orders;
     }
 

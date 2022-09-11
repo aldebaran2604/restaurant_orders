@@ -32,7 +32,7 @@ public class StockController : ControllerBase
         ResponseInformation<List<Stock>> responseInformation = new ResponseInformation<List<Stock>>()
         {
             Message = "The query was carried out successfully.",
-            ResultItem = DataHelpers.Stock
+            ResultItem = DataHelpers.ListStock
         };
         return Ok(responseInformation);
     }
@@ -43,7 +43,7 @@ public class StockController : ControllerBase
         ResponseInformation<Stock> responseInformation = new ResponseInformation<Stock>()
         {
             Message = "The query was carried out successfully.",
-            ResultItem = DataHelpers.Stock.FirstOrDefault(s => s.ProductSKU == sku)
+            ResultItem = DataHelpers.ListStock.FirstOrDefault(s => s.ProductSKU == sku)
         };
         return Ok(responseInformation);
     }
@@ -57,15 +57,44 @@ public class StockController : ControllerBase
             responseInformation.Success = false;
             responseInformation.Message = "The stock information is required.";
         }
-        else if (DataHelpers.Stock.Exists(s => s.ProductSKU == stock.ProductSKU))
+        else if(!DataHelpers.ListProducts.Exists(p=> p.SKU == stock.ProductSKU))
+        {
+            responseInformation.Success = false;
+            responseInformation.Message = "the product related to SKU does not exist.";
+        }
+        else if (DataHelpers.ListStock.Exists(s => s.ProductSKU == stock.ProductSKU))
         {
             responseInformation.Success = false;
             responseInformation.Message = "The product SKU already exists in the stock.";
         }
         else
         {
-            DataHelpers.Stock.Add(stock);
+            DataHelpers.ListStock.Add(stock);
             responseInformation.Message = "The product has been added successfully in the stock.";
+        }
+        return Ok(responseInformation);
+    }
+
+    [HttpPut("{sku}")]
+    public ActionResult<ResponseInformation> EditStock(string sku, Stock stock)
+    {
+        ResponseInformation responseInformation = new ResponseInformation();
+        Stock? stockQuery = DataHelpers.ListStock.FirstOrDefault(s => s.ProductSKU == sku);
+        if (stock is null)
+        {
+            responseInformation.Success = false;
+            responseInformation.Message = "The stock information is required.";
+        }
+        else if (stockQuery is null)
+        {
+            responseInformation.Success = false;
+            responseInformation.Message = "The stock does not exist.";
+        }
+        else
+        {
+            stockQuery.UnitPrice = stock.UnitPrice;
+            stockQuery.Quantity = stock.Quantity;
+            responseInformation.Message = "The stock information has been successfully updated.";
         }
         return Ok(responseInformation);
     }

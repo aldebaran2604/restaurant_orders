@@ -32,7 +32,7 @@ public class ProductsController : ControllerBase
         ResponseInformation<List<Product>> responseInformation = new ResponseInformation<List<Product>>()
         {
             Message = "The query was carried out successfully.",
-            ResultItem = DataHelpers.Products
+            ResultItem = DataHelpers.ListProducts
         };
         return Ok(responseInformation);
     }
@@ -43,7 +43,7 @@ public class ProductsController : ControllerBase
         ResponseInformation<Product> responseInformation = new ResponseInformation<Product>()
         {
             Message = "The query was carried out successfully.",
-            ResultItem = DataHelpers.Products.FirstOrDefault(p => p.SKU == sku)
+            ResultItem = DataHelpers.ListProducts.FirstOrDefault(p => p.SKU == sku)
         };
         return Ok(responseInformation);
     }
@@ -57,14 +57,14 @@ public class ProductsController : ControllerBase
             responseInformation.Success = false;
             responseInformation.Message = "The product is required.";
         }
-        else if (DataHelpers.Products.Exists(p => p.SKU == product?.SKU))
+        else if (DataHelpers.ListProducts.Exists(p => p.SKU == product?.SKU))
         {
             responseInformation.Success = false;
             responseInformation.Message = "The product SKU already exists.";
         }
         else
         {
-            DataHelpers.Products.Add(product);
+            DataHelpers.ListProducts.Add(product);
             responseInformation.Message = "The product has been added successfully.";
         }
         return Ok(responseInformation);
@@ -74,8 +74,13 @@ public class ProductsController : ControllerBase
     public ActionResult<ResponseInformation> EditProduct(string sku, Product product)
     {
         ResponseInformation responseInformation = new ResponseInformation();
-        Product? productQuery = DataHelpers.Products.FirstOrDefault(p => p.SKU == sku);
-        if (productQuery is null)
+        Product? productQuery = DataHelpers.ListProducts.FirstOrDefault(p => p.SKU == sku);
+        if (product is null)
+        {
+            responseInformation.Success = false;
+            responseInformation.Message = "The product is required.";
+        }
+        else if (productQuery is null)
         {
             responseInformation.Success = false;
             responseInformation.Message = "the product does not exist.";
@@ -95,7 +100,8 @@ public class ProductsController : ControllerBase
         return Ok(responseInformation);
     }
 
-    [HttpDelete("{sku}")]
+    //TODO: Evaluate the possibility of eliminating or changing status to no longer be used.
+    /* [HttpDelete("{sku}")]
     public ActionResult<ResponseInformation> DeleteProduct(string sku)
     {
         ResponseInformation responseInformation = new ResponseInformation();
@@ -111,7 +117,7 @@ public class ProductsController : ControllerBase
             responseInformation.Message = "The product has been removed successfully.";
         }
         return Ok(responseInformation);
-    }
+    } */
 
     #endregion Api Method
 }
