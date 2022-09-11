@@ -9,12 +9,22 @@ namespace RestaurantAPI.Controllers;
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
+    #region Properties
+
     private readonly ILogger<ProductsController> _logger;
+
+    #endregion Properties
+
+    #region Constructors
 
     public ProductsController(ILogger<ProductsController> logger)
     {
         _logger = logger;
     }
+
+    #endregion Constructors
+
+    #region Api Method
 
     [HttpGet]
     public ActionResult<ResponseInformation<List<Product>>> GetListProducts()
@@ -102,4 +112,6 @@ public class ProductsController : ControllerBase
         }
         return Ok(responseInformation);
     }
+
+    #endregion Api Method
 }

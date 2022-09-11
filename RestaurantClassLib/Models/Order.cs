@@ -26,6 +26,11 @@ public class Order
 
     #region Constructors
 
+    public Order()
+    {
+        OrderDetails = new List<OrderDetails>();
+    }
+
     public Order(List<OrderDetails> orderDetails)
     {
         OrderDetails = orderDetails;

@@ -6,7 +6,7 @@ public class Stock
 
     public int Id { get; set; }
 
-    public string ProductSKU { get; private set; }
+    public string ProductSKU { get; set; }
 
     /// <summary>
     /// Price by unit
@@ -21,6 +21,11 @@ public class Stock
     #endregion Properties
 
     #region Constructors
+
+    public Stock()
+    {
+        ProductSKU = string.Empty;
+    }
 
     public Stock(string sku)
     {
