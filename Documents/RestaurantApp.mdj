@@ -425,7 +425,7 @@
 									"left": 176,
 									"top": 392,
 									"width": 231.5380859375,
-									"height": 76,
+									"height": 91,
 									"nameLabel": {
 										"$ref": "AAAAAAGDKDqGZA+66Qw="
 									},
@@ -454,7 +454,7 @@
 											"top": 69,
 											"width": 176.40234375,
 											"height": 13,
-											"text": "type_product"
+											"text": "product_type"
 										},
 										{
 											"_type": "ERDColumnCompartmentView",
@@ -543,7 +543,7 @@
 												"$ref": "AAAAAAGDKGvyshBO1PY="
 											},
 											"edgePosition": 1,
-											"text": "fk_product_type_product"
+											"text": "fk_product_product_type"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -698,8 +698,8 @@
 												"$ref": "AAAAAAGDKIxXgxDqbWY="
 											},
 											"font": "Arial;13;1",
-											"left": 200,
-											"top": 557,
+											"left": 192,
+											"top": 573,
 											"width": 242.83056640625,
 											"height": 13,
 											"text": "order_details"
@@ -724,8 +724,8 @@
 														"$ref": "AAAAAAGDKJVhmBEahus="
 													},
 													"font": "Arial;13;0",
-													"left": 205,
-													"top": 580,
+													"left": 197,
+													"top": 596,
 													"width": 232.83056640625,
 													"height": 13
 												},
@@ -739,8 +739,8 @@
 														"$ref": "AAAAAAGDKJY8CBEmvdA="
 													},
 													"font": "Arial;13;0",
-													"left": 205,
-													"top": 595,
+													"left": 197,
+													"top": 611,
 													"width": 232.83056640625,
 													"height": 13
 												},
@@ -754,8 +754,8 @@
 														"$ref": "AAAAAAGDKJclWREwtdQ="
 													},
 													"font": "Arial;13;0",
-													"left": 205,
-													"top": 610,
+													"left": 197,
+													"top": 626,
 													"width": 232.83056640625,
 													"height": 13
 												},
@@ -769,22 +769,22 @@
 														"$ref": "AAAAAAGDKJfqixE7yZM="
 													},
 													"font": "Arial;13;0",
-													"left": 205,
-													"top": 625,
+													"left": 197,
+													"top": 641,
 													"width": 232.83056640625,
 													"height": 13
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 200,
-											"top": 575,
+											"left": 192,
+											"top": 591,
 											"width": 242.83056640625,
 											"height": 68
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 200,
-									"top": 552,
+									"left": 192,
+									"top": 568,
 									"width": 242.83056640625,
 									"height": 91,
 									"nameLabel": {
@@ -894,7 +894,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 259,
-											"top": 502,
+											"top": 518,
 											"width": 130.076171875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -913,7 +913,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 325,
-											"top": 486,
+											"top": 501,
 											"height": 13,
 											"alpha": 0.5235987755982988,
 											"distance": 30,
@@ -930,7 +930,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 325,
-											"top": 520,
+											"top": 536,
 											"height": 13,
 											"alpha": -0.5235987755982988,
 											"distance": 30,
@@ -947,7 +947,7 @@
 										"$ref": "AAAAAAGDKDqGYw+5LQs="
 									},
 									"lineStyle": 2,
-									"points": "310:467;310:552",
+									"points": "310:482;310:568",
 									"nameLabel": {
 										"$ref": "AAAAAAGDKJiNdBFKoKU="
 									},
@@ -1016,7 +1016,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGDKDEGAg9R9pY="
 									},
-									"name": "type_product_id",
+									"name": "product_type_id",
 									"type": "INTEGER",
 									"length": 0,
 									"foreignKey": true,
@@ -1145,7 +1145,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGDKDqGYw+3oNI="
 									},
-									"name": "folio_number",
+									"name": "id",
 									"type": "INTEGER",
 									"length": 0,
 									"primaryKey": true,
@@ -1182,7 +1182,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGDKC40oQ9HsE4="
 							},
-							"name": "type_product",
+							"name": "product_type",
 							"ownedElements": [
 								{
 									"_type": "ERDRelationship",
@@ -1190,7 +1190,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGDKGBouRAFAs4="
 									},
-									"name": "fk_product_type_product",
+									"name": "fk_product_product_type",
 									"end1": {
 										"_type": "ERDRelationshipEnd",
 										"_id": "AAAAAAGDKGvysRBLvn0=",
@@ -1326,7 +1326,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGDKIxXgxDo0ss="
 									},
-									"name": "folio_number_id",
+									"name": "order_id",
 									"type": "INTEGER",
 									"length": 0,
 									"foreignKey": true,
