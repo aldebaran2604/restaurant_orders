@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "2097df1f-e4ad-4da9-8670-bd0c0cd00411",
+		"name": "Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5470099"
+	},
+	"item": [
+		{
+			"name": "https://localhost:7041/api/Products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7041/api/Products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7041",
+					"path": [
+						"api",
+						"Products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7041/api/Products",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sku\":\"HOTFOOD-HAMBURGER-SMALL\",\n    \"productTypeId\":1,\n    \"name\":\"Bacon Burger\",\n    \"size\":\"Big\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:7041/api/Products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7041",
+					"path": [
+						"api",
+						"Products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7041/api/Products/HOTFOOD-BACON_BURGER-BIG",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productTypeId\": 2,\n    \"name\": \"Bacon Burger\",\n    \"size\": \"Big\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:7041/api/Products/HOTFOOD-BACON_BURGER-BIG",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7041",
+					"path": [
+						"api",
+						"Products",
+						"HOTFOOD-BACON_BURGER-BIG"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7041/api/Products/HOTFOOD-BACON_BURGER-BIG",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7041/api/Products/HOTFOOD-BACON_BURGER-BIG",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7041",
+					"path": [
+						"api",
+						"Products",
+						"HOTFOOD-BACON_BURGER-BIG"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

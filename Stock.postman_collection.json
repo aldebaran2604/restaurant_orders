@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "9e17a3b6-76f0-4d7e-84cb-ba0261feaec0",
+		"name": "Stock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5470099"
+	},
+	"item": [
+		{
+			"name": "https://localhost:7041/api/Stock",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:7041/api/Stock",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7041",
+					"path": [
+						"api",
+						"Stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7041/api/Stock",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"unitPrice\":1,\n    \"quantity\":100\n}"
+				},
+				"url": {
+					"raw": "https://localhost:7041/api/Stock/HOTFOOD-HAMBURGER-SMALL",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7041",
+					"path": [
+						"api",
+						"Stock",
+						"HOTFOOD-HAMBURGER-SMALL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7041/api/Stock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productSKU\": \"HOTFOOD-HAMBURGER-MEDIUM\",\n    \"unitPrice\": 1,\n    \"quantity\": 100\n}"
+				},
+				"url": {
+					"raw": "https://localhost:7041/api/Stock",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7041",
+					"path": [
+						"api",
+						"Stock"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
