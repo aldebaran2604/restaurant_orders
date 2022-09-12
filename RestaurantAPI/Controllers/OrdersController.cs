@@ -83,8 +83,10 @@ public class OrdersController : ControllerBase
             decimal totalToPay = decimal.Zero;
             foreach (OrderDetails orderDetail in orderDetails)
             {
+                Product product = DataHelpers.ListProducts.First(p => p.SKU == orderDetail.ProductSKU);
                 orderDetail.Id = DataHelpers.ConsecutiveOrderDetailsId;
                 orderDetail.OrderId = order.Id;
+                orderDetail.ProductName = product.Name;
 
                 Stock stock = DataHelpers.ListStock.First(s => s.ProductSKU == orderDetail.ProductSKU);
 
@@ -103,8 +105,8 @@ public class OrdersController : ControllerBase
     public ActionResult<ResponseInformation> EditOrderStatus(string folio, OrderStatus orderStatus)
     {
         ResponseInformation responseInformation = new ResponseInformation();
-        Order? order = DataHelpers.Orders.FirstOrDefault(o=> o.FolioNumber == folio);
-        if(order is null)
+        Order? order = DataHelpers.Orders.FirstOrDefault(o => o.FolioNumber == folio);
+        if (order is null)
         {
             responseInformation.Success = false;
             responseInformation.Message = $"The order of folio #{folio} does not exist.";

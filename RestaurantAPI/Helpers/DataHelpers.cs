@@ -97,8 +97,8 @@ internal static class DataHelpers
         Order order = new Order() { Id = ConsecutiveOrderId, OrderStatus = OrderStatus.Pending, TotalPay = totalToPay };
         List<OrderDetails> orderDetails = new List<OrderDetails>();
 
-        orderDetails.Add(new OrderDetails(productFirst.SKU) { Id = ConsecutiveOrderDetailsId,OrderId = order.Id, Quantity = 1 });
-        orderDetails.Add(new OrderDetails(productLast.SKU) { Id = ConsecutiveOrderDetailsId,OrderId = order.Id, Quantity = 1 });
+        orderDetails.Add(new OrderDetails(productFirst.SKU, productFirst.Name) { Id = ConsecutiveOrderDetailsId,OrderId = order.Id, Quantity = 1 });
+        orderDetails.Add(new OrderDetails(productLast.SKU, productLast.Name) { Id = ConsecutiveOrderDetailsId,OrderId = order.Id, Quantity = 1 });
         order.OrderDetails = orderDetails;
         orders.Add(order);
         return orders;

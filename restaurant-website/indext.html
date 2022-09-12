@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/sweetalert2.min.css" />
+    <title>Restaurant Web Orders</title>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="nav nav-tabs" id="orders-status" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active show" href="#pending" data-toggle="tab" role="tab">Pending</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#in_Process" data-toggle="tab" role="tab">In Process</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#completed" data-toggle="tab" role="tab">Completed</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#delivered" data-toggle="tab" role="tab">Delivered</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#canceled" data-toggle="tab" role="tab">Canceled</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="tabs">
+            <div class="tab-pane" id="pending">
+
+            </div>
+            <div class="tab-pane" id="in_Process">
+
+            </div>
+            <div class="tab-pane" id="completed">
+
+            </div>
+            <div class="tab-pane" id="delivered">
+
+            </div>
+            <div class="tab-pane" id="canceled">
+
+            </div>
+        </div>
+    </div>
+    <footer>
+    </footer>
+    <script src="./resources/js/jquery-3.6.1.min.js"></script>
+    <script src="./resources/js/sweetalert2.all.min.js"></script>
+    <script src="./resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./resources/bootstrap/js/bootstrap.js"></script>
+    <script src="./resources/js/index.js"></script>
+    <script id="template_panel" type="text/template">
+        <div class="card" style="width: 24rem;">
+            <div class="card-header" id="{order_id}">
+                Order #{order_id}
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-group list-group-flush" id="details_{order_id}">
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div id="buttons_{order_id}">
+                        <button id="primary_{order_id}" onclick="changeStatusOrder('{order_id}', {status_new})" type="button" class="btn btn-primary">Primary</button>
+                        <button id="danger_{order_id}" onclick="changeStatusOrder('{order_id}', {status_cancel})" type="button" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </script>
+    <script id="template_details" type="text/template">
+        <li class="list-group-item">{product_name} - {product_quantity}</li>
+    </script>
+</body>
+
+</html>
