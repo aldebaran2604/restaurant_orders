@@ -13,6 +13,15 @@ It is an application with api rest with .net core 6 technology in the backend an
 - Enter from the terminal to the directory where the project is located with the command **"cd [directory_path]"**
 - Run the command **"dotnet run"** which will compile the project and run it
 
+## Test Service rest examples
+In the .json files that have to be uploaded to postman are the requests to the respective ulrs of each service.
+
+1. Install Postman
+2. Import the files to postman:
+* Products.postman_collection.json
+* Orders.postman_collection.json
+* Stock.postman_collection.json
+
 ## Instructions for run the web site
 
 While running the service in the terminal
